@@ -1,7 +1,7 @@
 import { Server } from "../dist/server.js";
-import { routerInstance as router } from "../dist/router.js";
-import { middlewareInstance as middleware } from "../dist/middleware.js";
-import { responseInstance as response } from "../dist/response.js";
+import router from "../dist/router.js";
+import middleware from "../dist/middleware.js";
+import response from "../dist/response.js";
 
 const server = new Server();
 

@@ -42,5 +42,5 @@ class Router {
   }
 }
 
-const routerInstance = new Router();
-export { Router, routerInstance };
+const router = new Router();
+export default router;

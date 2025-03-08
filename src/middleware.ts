@@ -21,5 +21,5 @@ class Middleware {
   }
 }
 
-const middlewareInstance = new Middleware();
-export { Middleware, middlewareInstance };
+const middleware = new Middleware();
+export default middleware;

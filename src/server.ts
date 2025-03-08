@@ -29,5 +29,4 @@ class Server {
   }
 }
 
-const serverInstance = new Server();
-export { Server, serverInstance };
+export { Server };

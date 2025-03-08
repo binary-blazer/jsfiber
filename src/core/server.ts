@@ -1,7 +1,7 @@
 import { createServer, IncomingMessage, ServerResponse } from 'node:http';
 import { error, warn, success } from '../lib/logger.js';
-import { routerInstance as router } from '../router.js';
-import { middlewareInstance as middleware } from '../middleware.js';
+import router from '../router.js';
+import middleware from '../middleware.js';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 

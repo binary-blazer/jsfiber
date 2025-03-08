@@ -30,5 +30,5 @@ class Request {
   }
 }
 
-const requestInstance = (req: any) => new Request(req);
-export { Request, requestInstance };
+const request = (req: any) => new Request(req);
+export default request;

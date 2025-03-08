@@ -16,5 +16,5 @@ class Response {
   }
 }
 
-const responseInstance = (res: any) => new Response(res);
-export { Response, responseInstance };
+const response = (res: any) => new Response(res);
+export default response;
