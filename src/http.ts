@@ -53,35 +53,65 @@ class Response {
 }
 
 class Request {
-    private req: any;
+  private req: any;
 
-    constructor(req: any) {
-      this.req = req;
-    }
+  constructor(req: any) {
+    this.req = req;
+  }
 
-    public get body(): Promise<any> {
-      return new Promise((resolve, reject) => {
-        let body = "";
-        this.req.on("data", (chunk: any) => {
-          body += chunk.toString();
-        });
-        this.req.on("end", () => {
-          resolve(JSON.parse(body));
-        });
-        this.req.on("error", (err: any) => {
-          reject(err);
-        });
+  /**
+   * Returns the body of the request.
+   * @returns {Promise<any>} - The body of the request
+   * @example
+   * const body = await reqInstance.body;
+   * console.log(body);
+   */
+  public get body(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let body = "";
+      this.req.on("data", (chunk: any) => {
+        body += chunk.toString();
       });
-    }
-
-    public get query(): { [key: string]: string } {
-      const url = new URL(this.req.url, `http://${this.req.headers.host}`);
-      const queryParams: { [key: string]: string } = {};
-      url.searchParams.forEach((value, key) => {
-        queryParams[key] = value;
+      this.req.on("end", () => {
+        const contentType = this.req.headers["content-type"];
+        try {
+          if (contentType === "application/json") {
+            resolve(JSON.parse(body));
+          } else if (contentType === "application/x-www-form-urlencoded") {
+            const params = new URLSearchParams(body);
+            const result: { [key: string]: string } = {};
+            params.forEach((value, key) => {
+              result[key] = value;
+            });
+            resolve(result);
+          } else {
+            resolve(body);
+          }
+        } catch (err) {
+          resolve(body);
+        }
       });
-      return queryParams;
-    }
+      this.req.on("error", (err: any) => {
+        reject(err);
+      });
+    });
+  }
+
+  /**
+   * Returns the query parameters of the request.
+   * @returns {object} - The query parameters of the request
+   * @example
+   * const query = reqInstance.query;
+   * console.log(query);
+   */
+  public get query(): { [key: string]: string } {
+    const url = new URL(this.req.url, `http://${this.req.headers.host}`);
+    const queryParams: { [key: string]: string } = {};
+    url.searchParams.forEach((value, key) => {
+      queryParams[key] = value;
+    });
+    return queryParams;
+  }
 }
 
 /**
