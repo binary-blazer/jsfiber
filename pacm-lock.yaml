@@ -1,11 +1,43 @@
+'@types/cli-box':
+  version: 6.0.4
+  shasum: 908421ec63a78c287e767ea7fe73639057638ad8
+  tarball: https://registry.npmjs.org/@types/cli-box/-/cli-box-6.0.4.tgz
 '@types/node':
   version: 22.13.10
   shasum: df9ea358c5ed991266becc3109dc2dc9125d77e4
   tarball: https://registry.npmjs.org/@types/node/-/node-22.13.10.tgz
+ansi-parser:
+  version: latest
+  shasum: 38fd8888dd1b37755d7f8bf89e2f58e8858ce5e1
+  tarball: https://registry.npmjs.org/ansi-parser/-/ansi-parser-3.2.11.tgz
 chalk:
   version: 5.4.1
   shasum: 1b48bf0963ec158dce2aacf69c093ae2dd2092d8
   tarball: https://registry.npmjs.org/chalk/-/chalk-5.4.1.tgz
+cli-box:
+  version: latest
+  shasum: 10b88d2eef2bfb68adcbe596f39329d8b3d28c6c
+  tarball: https://registry.npmjs.org/cli-box/-/cli-box-6.0.11.tgz
+deffy:
+  version: latest
+  shasum: 6b6f4194374c5bda0840fc0d9ba3ab5def227cfd
+  tarball: https://registry.npmjs.org/deffy/-/deffy-2.2.5.tgz
+function.name:
+  version: latest
+  shasum: 76be1a4ad0dfa872d8025d55d6ca91767652bc67
+  tarball: https://registry.npmjs.org/function.name/-/function.name-1.0.14.tgz
+is-undefined:
+  version: latest
+  shasum: 1b2241ef0450bc32c725228cc8d4efe9162ef127
+  tarball: https://registry.npmjs.org/is-undefined/-/is-undefined-1.0.12.tgz
+is-win:
+  version: latest
+  shasum: ee3bead82a511f8352695447502eafe342a5d9a9
+  tarball: https://registry.npmjs.org/is-win/-/is-win-1.0.11.tgz
+noop6:
+  version: latest
+  shasum: beb17db586b684585eb955de502506a069c817d7
+  tarball: https://registry.npmjs.org/noop6/-/noop6-1.0.10.tgz
 prettier:
   version: 3.5.3
   shasum: 4fc2ce0d657e7a02e602549f053b239cb7dfe1b5
@@ -14,6 +46,14 @@ typescript:
   version: 5.8.2
   shasum: 8170b3702f74b79db2e5a96207c15e65807999e4
   tarball: https://registry.npmjs.org/typescript/-/typescript-5.8.2.tgz
+typpy:
+  version: latest
+  shasum: ea9a3e74e2429a17462b096108eccd86b5b042d4
+  tarball: https://registry.npmjs.org/typpy/-/typpy-2.3.14.tgz
+ul:
+  version: latest
+  shasum: d1468cf368b2cd86d6fe7eeb513d58f3adddb77f
+  tarball: https://registry.npmjs.org/ul/-/ul-5.2.16.tgz
 undici-types:
   version: latest
   shasum: 19f31b649579a549957fb1810712dfaf84212b57
