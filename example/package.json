@@ -4,5 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js"
+  },
+  "dependencies": {
+    "jsfiber": "^1.0.1"
   }
 }

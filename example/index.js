@@ -1,6 +1,6 @@
-import { Server } from "../dist/server.js";
-import { Router, MiddlewareRouter } from "../dist/router.js";
-import { request, response } from "../dist/http.js";
+import { Server } from "jsfiber/server";
+import { Router, MiddlewareRouter } from "jsfiber/router";
+import { request, response } from "jsfiber/http";
 
 const server = new Server({ infoBox: true, enableCORS: true });
 const router = new Router();
