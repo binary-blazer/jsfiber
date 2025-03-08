@@ -70,5 +70,18 @@ router.options("/options", async (_req, res) => {
   });
 });
 
+router.get("/cookies", async (req, res) => {
+  const reqInstance = request(req);
+  const cookies = reqInstance.parseCookies();
+  console.log(`Cookies: ${JSON.stringify(cookies)}`);
+
+  const resInstance = response(res);
+  resInstance.status(200).json({
+    message: 'Cookies parsed',
+    cookies: cookies
+  });
+});
+
 server.setPublicDirectory("public");
+server.setCORS(true);
 server.start(3000);

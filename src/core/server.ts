@@ -8,12 +8,15 @@ import { join } from 'node:path';
 import { constants } from 'node:fs';
 import Box from 'cli-box';
 import ip from 'ip';
+import { fiberResponseInstance } from './response.js';
+import { CorsModule } from '../module.js';
 
 class FiberServer {
   private server: any;
   private publicDirectory: string | null;
+  private enableCORS: boolean;
 
-  constructor() {
+  constructor(modules: any[] = []) {
     this.server = createServer((req: IncomingMessage, res: ServerResponse) => {
       const url = req.url ?? '/';
       const method = req.method ?? 'GET';
@@ -34,9 +37,22 @@ class FiberServer {
         } else {
           handleRequest(method, url, req, res);
         }
+        if (this.enableCORS) {
+          const resInstance = fiberResponseInstance(res);
+          resInstance.setCORSHeaders({
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+          });
+        }
       });
     });
     this.publicDirectory = null;
+    this.enableCORS = false;
+
+    if (modules.includes(CorsModule)) {
+      this.enableCORS = true;
+    }
   }
 
   private async checkPortAvailability(port: number): Promise<number> {
@@ -94,6 +110,10 @@ class FiberServer {
 
   public setPublicDirectory(path: string): void {
     this.publicDirectory = path;
+  }
+
+  public setCORS(enable: boolean): void {
+    this.enableCORS = enable;
   }
 
   private async serveStaticFile(filePath: string, res: ServerResponse): Promise<void> {

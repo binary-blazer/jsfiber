@@ -26,6 +26,12 @@ class FiberResponse {
     this.res.setHeader("Content-Type", "text/plain");
     this.res.end(data);
   }
+
+  public setCORSHeaders(options: { [key: string]: string }): void {
+    for (const [key, value] of Object.entries(options)) {
+      this.res.setHeader(key, value);
+    }
+  }
 }
 
 const fiberResponseInstance = (res: any) => new FiberResponse(res);
