@@ -5,11 +5,23 @@ class Response {
       this.res = res;
     }
   
+    /**
+      * Sends a JSON response.
+      * @param {object} data - The data to send in the response
+      * @example
+      * res.json({ message: "Hello, world!" });
+      */
     public json(data: any): void {
       this.res.setHeader("Content-Type", "application/json");
       this.res.end(JSON.stringify(data));
     }
   
+    /**
+      * Sends a Text response.
+      * @param {string} data - The data to send in the response
+      * @example
+      * res.text("Hello, world!");
+      */
     public text(data: string): void {
       this.res.setHeader("Content-Type", "text/plain");
       this.res.end(data);
@@ -47,7 +59,29 @@ class Request {
       return queryParams;
     }
 }
-  
+
+/**
+  * Creates a new Response object.
+  * @param {object} res - The response object
+  * @returns {Response} - The Response object
+  * @example
+  * const resInstance = response(res);
+  * resInstance.json({ message: "Hello, world!" });
+  * resInstance.text("Hello, world!");
+  */
 const response = (res: any) => new Response(res);
+
+/**
+  * Creates a new Request object.
+  * @param {object} req - The request object
+  * @returns {Request} - The Request object
+  * @example
+  * const reqInstance = request(req);
+  * const body = await reqInstance.body;
+  * const query = reqInstance.query;
+  * console.log(body);
+  * console.log(query);
+  */
 const request = (req: any) => new Request(req);
+
 export { response, request };

@@ -11,11 +11,6 @@ class Server {
     this.server = fiberServerInstance;
   }
 
-  /**
-   * Checks the availability of a port.
-   * @param {number} port - The port number to check.
-   * @returns {Promise<number>} - A promise that resolves to an available port number.
-   */
   private async checkPortAvailability(port: number): Promise<number> {
     return this.server.checkPortAvailability(port);
   }
@@ -24,6 +19,9 @@ class Server {
    * Starts the server on the specified port.
    * @param {number} port - The port number to start the server on.
    * @returns {Promise<void>} - A promise that resolves when the server has started.
+   * @example
+   * server.start(3000);
+   * // Server running at http://localhost:3000
    */
   public async start(port: number): Promise<void> {
     try {
@@ -40,6 +38,10 @@ class Server {
   /**
    * Sets the public directory for serving static files.
    * @param {string} path - The path to the public directory.
+   * @returns {void}
+   * @example
+   * server.setPublicDirectory("public");
+   * // Static files are now served from the ./public directory.
    */
   public setPublicDirectory(path: string): void {
     this.server.setPublicDirectory(path);
