@@ -1,5 +1,5 @@
 import { Server } from "../dist/server.js";
-import middleware from "../dist/middleware/private/middleware.js";
+import middleware from "../dist/middleware.js";
 import router from "../dist/router.js";
 import response from "../dist/response.js";
 
