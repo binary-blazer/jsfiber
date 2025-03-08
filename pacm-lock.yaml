@@ -1,0 +1,8 @@
+prettier:
+  version: 3.5.3
+  shasum: 4fc2ce0d657e7a02e602549f053b239cb7dfe1b5
+  tarball: https://registry.npmjs.org/prettier/-/prettier-3.5.3.tgz
+typescript:
+  version: 5.8.2
+  shasum: 8170b3702f74b79db2e5a96207c15e65807999e4
+  tarball: https://registry.npmjs.org/typescript/-/typescript-5.8.2.tgz

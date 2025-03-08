@@ -1,0 +1,23 @@
+{
+  "name": "jsfiber",
+  "version": "1.0.0",
+  "description": "The next generation JavaScript web-framework",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Jonas F. Franke <@binary-blazer>",
+    "email": "me@binaryblazer.me",
+    "url": "https://binaryblazer.me"
+  },
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "prettier": "^3.5.3"
+  }
+}
