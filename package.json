@@ -1,12 +1,24 @@
 {
   "name": "jsfiber",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a JavaScript web-framework",
   "main": "dist/index.js",
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.js"
+    },
+    "./http": {
+      "import": "./dist/http.js",
+      "require": "./dist/http.js"
+    },
+    "./router": {
+      "import": "./dist/router.js",
+      "require": "./dist/router.js"
+    },
+    "./server": {
+      "import": "./dist/server.js",
+      "require": "./dist/server.js"
     }
   },
   "files": [
