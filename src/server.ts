@@ -1,33 +1,17 @@
-import http from "node:http";
+import { CustomServer, customServerInstance } from "./core/server.js";
 import { error, warn, success } from "./lib/logger.js";
 import { routerInstance as router } from "./router.js";
 import { middlewareInstance as middleware } from "./middleware.js";
 
 class Server {
-  private server: http.Server;
+  private server: any;
 
   constructor() {
-    this.server = http.createServer((req, res) => {
-      const url = req.url ?? "/";
-      const method = req.method ?? "GET";
-      middleware.executeMiddlewares(req, res, () => {
-        router.handleRequest(method, url, req, res);
-      });
-    });
+    this.server = customServerInstance;
   }
 
   private async checkPortAvailability(port: number): Promise<number> {
-    return new Promise((resolve, reject) => {
-      const testServer = http.createServer();
-      testServer.listen(port, () => {
-        testServer.close(() => {
-          resolve(port);
-        });
-      });
-      testServer.on("error", () => {
-        resolve(this.checkPortAvailability(port + 1));
-      });
-    });
+    return this.server.checkPortAvailability(port);
   }
 
   public async start(port: number): Promise<void> {
@@ -36,9 +20,7 @@ class Server {
       if (availablePort !== port) {
         warn(`port ${port} is unavailable. Trying port ${availablePort} instead.`);
       }
-      this.server.listen(availablePort, () => {
-        success(`server running at http://localhost:${availablePort}/`);
-      });
+      this.server.start(availablePort);
     } catch (e) {
       error(`server startup failure: ${e}`);
     }

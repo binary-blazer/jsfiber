@@ -1,20 +1,22 @@
-import { CustomRequest, customRequestInstance } from "./core/request.js";
-
-class Request {
+class CustomRequest {
   private req: any;
 
   constructor(req: any) {
     this.req = req;
   }
 
-  public get body(): Promise<any> {
+  public async parseBody(): Promise<any> {
     return new Promise((resolve, reject) => {
       let body = "";
       this.req.on("data", (chunk: any) => {
         body += chunk.toString();
       });
       this.req.on("end", () => {
-        resolve(JSON.parse(body));
+        try {
+          resolve(JSON.parse(body));
+        } catch (err) {
+          reject(err);
+        }
       });
       this.req.on("error", (err: any) => {
         reject(err);
@@ -22,7 +24,7 @@ class Request {
     });
   }
 
-  public get query(): { [key: string]: string } {
+  public parseQueryParams(): { [key: string]: string } {
     const url = new URL(this.req.url, `http://${this.req.headers.host}`);
     const queryParams: { [key: string]: string } = {};
     url.searchParams.forEach((value, key) => {
@@ -32,5 +34,5 @@ class Request {
   }
 }
 
-const requestInstance = (req: any) => new Request(req);
-export { Request, requestInstance };
+const customRequestInstance = (req: any) => new CustomRequest(req);
+export { CustomRequest, customRequestInstance };
