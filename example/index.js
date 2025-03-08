@@ -83,5 +83,4 @@ router.get("/cookies", async (req, res) => {
 });
 
 server.setPublicDirectory("public");
-server.setCORS(true);
 server.start(3000);
