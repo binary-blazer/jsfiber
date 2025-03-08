@@ -1,9 +1,9 @@
-import { serverInstance as server } from "../dist/server.js";
+import { Server } from "../dist/server.js";
 import { routerInstance as router } from "../dist/router.js";
 import { middlewareInstance as middleware } from "../dist/middleware.js";
 import { responseInstance as response } from "../dist/response.js";
 
-server.start(3000);
+const server = new Server();
 
 middleware.use((req, _res, next) => {
   console.log(`${req.method} ${req.url}`);
@@ -18,3 +18,6 @@ router.get("/", (_req, res) => {
   //     message: 'Hello, World!',
   // })
 });
+
+server.setPublicDirectory("public");
+server.start(3000);
