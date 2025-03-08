@@ -1,10 +1,16 @@
 class Response {
     private res: any;
-  
+    private statusCode: number | null = null;
+
     constructor(res: any) {
       this.res = res;
     }
-  
+
+    public status(code: number): this {
+      this.statusCode = code;
+      return this;
+    }
+
     /**
       * Sends a JSON response.
       * @param {object} data - The data to send in the response
@@ -12,10 +18,13 @@ class Response {
       * res.json({ message: "Hello, world!" });
       */
     public json(data: any): void {
+      if (this.statusCode) {
+        this.res.statusCode = this.statusCode;
+      }
       this.res.setHeader("Content-Type", "application/json");
       this.res.end(JSON.stringify(data));
     }
-  
+
     /**
       * Sends a Text response.
       * @param {string} data - The data to send in the response
@@ -23,6 +32,9 @@ class Response {
       * res.text("Hello, world!");
       */
     public text(data: string): void {
+      if (this.statusCode) {
+        this.res.statusCode = this.statusCode;
+      }
       this.res.setHeader("Content-Type", "text/plain");
       this.res.end(data);
     }
@@ -30,11 +42,11 @@ class Response {
 
 class Request {
     private req: any;
-  
+
     constructor(req: any) {
       this.req = req;
     }
-  
+
     public get body(): Promise<any> {
       return new Promise((resolve, reject) => {
         let body = "";
@@ -49,7 +61,7 @@ class Request {
         });
       });
     }
-  
+
     public get query(): { [key: string]: string } {
       const url = new URL(this.req.url, `http://${this.req.headers.host}`);
       const queryParams: { [key: string]: string } = {};
