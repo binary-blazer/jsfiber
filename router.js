@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = exports.middlewareRouter = exports.Router = exports.MiddlewareRouter = void 0;
-const data_1 = require("./dist/data");
+const data_1 = require("./data");
 /**
  * MiddlewareRouter class to manage middleware functions.
  */

@@ -25,7 +25,7 @@
     "url": "https://github.com/binary-blazer/jsfiber.git"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && node ./scripts/moveFiles.js",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepublishOnly": "bun run build",

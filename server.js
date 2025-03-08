@@ -10,8 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Server = void 0;
-const server_js_1 = require("./dist/core/server.js");
-const logger_js_1 = require("./dist/lib/logger.js");
+const server_js_1 = require("./core/server.js");
+const logger_js_1 = require("./lib/logger.js");
 /**
  * Represents the server instance.
  */
