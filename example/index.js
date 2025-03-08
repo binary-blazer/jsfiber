@@ -2,7 +2,7 @@ import { Server } from "jsfiber/server";
 import { Router, MiddlewareRouter } from "jsfiber/router";
 import { request, response } from "jsfiber/http";
 
-const server = new Server({ infoBox: true, enableCORS: true });
+const server = new Server({ infoBox: false, enableCORS: true });
 const router = new Router();
 const middleware = new MiddlewareRouter();
 

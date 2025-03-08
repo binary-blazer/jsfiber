@@ -141,7 +141,6 @@ JSFiber includes built-in CORS support. You can enable CORS by including the `Co
 
 ```javascript
 import { Server } from "jsfiber/server";
-import { CorsModule } from "jsfiber/module";
 
 const server = new Server({ infoBox: true, enableCORS: true });
 server.start(3000);
