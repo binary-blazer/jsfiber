@@ -2,7 +2,6 @@ import { createServer, IncomingMessage, ServerResponse } from 'node:http';
 import { error, warn, success } from '../lib/logger.js';
 import router from '../router.js';
 import middleware from '../middleware.js';
-import executeMiddlewares from '../middleware/private/executeMiddlewares.js';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -14,7 +13,7 @@ class FiberServer {
     this.server = createServer((req: IncomingMessage, res: ServerResponse) => {
       const url = req.url ?? '/';
       const method = req.method ?? 'GET';
-      executeMiddlewares(req, res, () => {
+      middleware.executeMiddlewares(req, res, () => {
         if (this.publicDirectory && method === 'GET') {
           this.serveStaticFile(url, res);
         } else {
