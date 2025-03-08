@@ -15,10 +15,32 @@ class Server {
     });
   }
 
-  public start(port: number): void {
-    this.server.listen(port, () => {
-      console.log(`Server running at http://localhost:${port}/`);
+  private async checkPortAvailability(port: number): Promise<number> {
+    return new Promise((resolve, reject) => {
+      const testServer = http.createServer();
+      testServer.listen(port, () => {
+        testServer.close(() => {
+          resolve(port);
+        });
+      });
+      testServer.on("error", () => {
+        resolve(this.checkPortAvailability(port + 1));
+      });
     });
+  }
+
+  public async start(port: number): Promise<void> {
+    try {
+      const availablePort = await this.checkPortAvailability(port);
+      if (availablePort !== port) {
+        console.warn(`Port ${port} is unavailable. Trying port ${availablePort} instead.`);
+      }
+      this.server.listen(availablePort, () => {
+        console.log(`Server running at http://localhost:${availablePort}/`);
+      });
+    } catch (error) {
+      console.error("Failed to start the server:", error);
+    }
   }
 }
 
