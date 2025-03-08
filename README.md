@@ -22,6 +22,10 @@ import server from './src/server';
 server.start(3000);
 ```
 
+### Port Availability Check
+
+The server now includes a feature to check port availability before starting. If the specified port is unavailable, the server will try subsequent ports until it finds an available one. Warnings are logged each time a new port is tried.
+
 ### Defining Routes
 
 You can define routes using the `router` instance. Here is an example of defining GET and POST routes:
@@ -56,6 +60,10 @@ middleware.use((req, res, next) => {
   next();
 });
 ```
+
+### Improved Error Handling
+
+The server now includes improved error handling to manage various scenarios, including port unavailability and server errors. This ensures that the server can handle errors gracefully and provide meaningful error messages.
 
 ## License
 
