@@ -23,6 +23,10 @@ class Server {
       error(`server startup failure: ${e}`);
     }
   }
+
+  public setPublicDirectory(path: string): void {
+    this.server.setPublicDirectory(path);
+  }
 }
 
 const serverInstance = new Server();
