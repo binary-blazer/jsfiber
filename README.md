@@ -1,6 +1,6 @@
 # JSFiber
 
-JSFiber is a next-generation JavaScript web framework designed to be a comprehensive web server utility like Express. It provides routing, middleware, and request handling features, all while being fast and efficient.
+JSFiber is a JavaScript web framework designed to be a comprehensive web server utility like Express. It provides routing, middleware, and request handling features, all while being fast and efficient.
 
 ## Installation
 
