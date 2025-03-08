@@ -1,4 +1,5 @@
 import http from "node:http";
+import { error, warn, success } from "./lib/logger.js";
 import { routerInstance as router } from "./router.js";
 import { middlewareInstance as middleware } from "./middleware.js";
 
@@ -33,13 +34,13 @@ class Server {
     try {
       const availablePort = await this.checkPortAvailability(port);
       if (availablePort !== port) {
-        console.warn(`Port ${port} is unavailable. Trying port ${availablePort} instead.`);
+        warn(`port ${port} is unavailable. Trying port ${availablePort} instead.`);
       }
       this.server.listen(availablePort, () => {
-        console.log(`Server running at http://localhost:${availablePort}/`);
+        success(`server running at http://localhost:${availablePort}/`);
       });
-    } catch (error) {
-      console.error("Failed to start the server:", error);
+    } catch (e) {
+      error(`server startup failure: ${e}`);
     }
   }
 }

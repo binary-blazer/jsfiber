@@ -1,3 +1,5 @@
+import { error } from "./lib/logger.js";
+
 class Router {
   private routes: { [key: string]: { [key: string]: Function } };
   private rootHandler: Function | null;
@@ -34,7 +36,7 @@ class Router {
       if (routeHandler) {
         routeHandler(...args);
       } else {
-        console.error(`No route found for ${method} ${path}`);
+        error(`No route found for ${method} ${path}`);
       }
     }
   }

@@ -18,8 +18,3 @@ router.get("/", (_req, res) => {
   //     message: 'Hello, World!',
   // })
 });
-
-router.get("/about", (_req, res) => {
-    const resInstance = response(res);
-    resInstance.text("About us");
-});

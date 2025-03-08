@@ -2,6 +2,10 @@
   version: 22.13.10
   shasum: df9ea358c5ed991266becc3109dc2dc9125d77e4
   tarball: https://registry.npmjs.org/@types/node/-/node-22.13.10.tgz
+chalk:
+  version: 5.4.1
+  shasum: 1b48bf0963ec158dce2aacf69c093ae2dd2092d8
+  tarball: https://registry.npmjs.org/chalk/-/chalk-5.4.1.tgz
 prettier:
   version: 3.5.3
   shasum: 4fc2ce0d657e7a02e602549f053b239cb7dfe1b5
