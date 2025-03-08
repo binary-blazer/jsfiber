@@ -6,15 +6,15 @@ class Response {
   }
 
   public json(data: any): void {
-    this.res.setHeader('Content-Type', 'application/json');
+    this.res.setHeader("Content-Type", "application/json");
     this.res.end(JSON.stringify(data));
   }
 
   public text(data: string): void {
-    this.res.setHeader('Content-Type', 'text/plain');
+    this.res.setHeader("Content-Type", "text/plain");
     this.res.end(data);
   }
 }
 
 const responseInstance = (res: any) => new Response(res);
-export default responseInstance;
+export { Response, responseInstance };

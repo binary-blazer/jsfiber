@@ -22,4 +22,4 @@ class Middleware {
 }
 
 const middlewareInstance = new Middleware();
-export default middlewareInstance;
+export { Middleware, middlewareInstance };

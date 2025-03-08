@@ -7,14 +7,14 @@ class Request {
 
   public get body(): Promise<any> {
     return new Promise((resolve, reject) => {
-      let body = '';
-      this.req.on('data', (chunk: any) => {
+      let body = "";
+      this.req.on("data", (chunk: any) => {
         body += chunk.toString();
       });
-      this.req.on('end', () => {
+      this.req.on("end", () => {
         resolve(JSON.parse(body));
       });
-      this.req.on('error', (err: any) => {
+      this.req.on("error", (err: any) => {
         reject(err);
       });
     });
@@ -31,4 +31,4 @@ class Request {
 }
 
 const requestInstance = (req: any) => new Request(req);
-export default requestInstance;
+export { Request, requestInstance };

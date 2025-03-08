@@ -1,13 +1,17 @@
-import http from 'node:http';
+import http from "node:http";
+import { routerInstance as router } from "./router.js";
+import { middlewareInstance as middleware } from "./middleware.js";
 
 class Server {
   private server: http.Server;
 
   constructor() {
-    this.server = http.createServer((_req, res) => {
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/plain');
-      res.end('Hello, World!\n');
+    this.server = http.createServer((req, res) => {
+      const url = req.url ?? "/";
+      const method = req.method ?? "GET";
+      middleware.executeMiddlewares(req, res, () => {
+        router.handleRequest(method, url, req, res);
+      });
     });
   }
 
@@ -19,4 +23,4 @@ class Server {
 }
 
 const serverInstance = new Server();
-export default serverInstance;
+export { Server, serverInstance };
