@@ -1,6 +1,6 @@
 import { Server } from "../dist/server.js";
 import { Router, MiddlewareRouter } from "../dist/router.js";
-import { response } from "../dist/client.js";
+import { response } from "../dist/http.js";
 
 const server = new Server();
 const router = new Router();

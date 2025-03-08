@@ -14,13 +14,28 @@
     "README.md",
     "LICENSE"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/binary-blazer/jsfiber.git"
+  },
   "scripts": {
     "build": "tsc",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "jsfiber",
+    "fiber",
+    "web",
+    "framework",
+    "javascript",
+    "typescript"
+  ],
+  "homepage": "https://github.com/binary-blazer/jsfiber#readme",
+  "bugs": {
+    "url": "https://github.com/binary-blazer/jsfiber/issues"
+  },
   "author": {
     "name": "Jonas F. Franke <@binary-blazer>",
     "email": "me@binaryblazer.me",

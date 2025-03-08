@@ -1,4 +1,3 @@
-import { error } from "./lib/logger.js";
 import { middlewares, handlers, routes } from "./data";
 
 export class MiddlewareRouter {
@@ -16,16 +15,13 @@ export class MiddlewareRouter {
 
 export class Router {
   private routes: { [key: string]: { [key: string]: Function } };
-  private rootHandler: Function | null;
 
   constructor() {
     this.routes = routes;
-    this.rootHandler = handlers.rootHandler;
   }
 
   public get(path: string, handler: Function): void {
     if (path === "/") {
-      this.rootHandler = handler;
       handlers.rootHandler = handler;
     } else {
       this.registerRoute("GET", path, handler);
