@@ -4,7 +4,7 @@
     "": {
       "name": "@jsfiber/example",
       "dependencies": {
-        "jsfiber": "^1.0.2",
+        "jsfiber": "^1.0.3",
       },
     },
   },
@@ -25,7 +25,7 @@
 
     "is-win": ["is-win@1.0.11", "", {}, "sha512-+XpgpizPqNzohXiqme7pfhAhpoG0Eo+CtuSx/XYW4enarERuheDbNbFrm4+XYylpV1w/eI+si5itFA0RfCWjog=="],
 
-    "jsfiber": ["jsfiber@1.0.3", "", { "dependencies": { "chalk": "^5.4.1", "cli-box": "^6.0.11", "ip": "^2.0.1" } }, "sha512-PJMLepTXhW9lBJiuJ3+rVOOEIeoxeRyrhR+dkvdA8CJaO/e9sRbQ6u5EXcCc2+iBpAiHlH+OJnvo2/WbGBf+fg=="],
+    "jsfiber": ["jsfiber@1.0.4", "", { "dependencies": { "chalk": "^5.4.1", "cli-box": "^6.0.11", "ip": "^2.0.1" } }, "sha512-JHvKgX0lVAqAz+agGw1lfueCLt5SBwWNOok/PkS23owfxprHXsMQjubUYDmc4Phz/+YXo/f/zB5G9mS3Uj3w8A=="],
 
     "noop6": ["noop6@1.0.10", "", {}, "sha512-WZvuCILZFZHK+WuqCQwxLBGllkBK1ct8s8Mu9FMDbEsBE6/bqNxyFGbX7Xky+6bYFL8X2Ou4Cis4CJyrwXLvQA=="],
 

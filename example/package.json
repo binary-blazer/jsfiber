@@ -6,6 +6,6 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "jsfiber": "^1.0.3"
+    "jsfiber": "^1.0.4"
   }
 }
