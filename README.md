@@ -4,10 +4,16 @@ JSFiber is a next-generation JavaScript web framework designed to be a comprehen
 
 ## Installation
 
-To install JSFiber, use npm:
+To install JSFiber, use npm or the package manager of your choice.
 
 ```sh
 npm install jsfiber
+# or
+pnpm add jsfiber
+# or
+yarn add jsfiber
+# or
+bun add jsfiber
 ```
 
 ## Usage
