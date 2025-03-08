@@ -5,7 +5,7 @@
       "name": "jsfiber",
       "dependencies": {
         "chalk": "^5.4.1",
-        "cli-box": "^latest",
+        "cli-box": "^6.0.11",
         "ip": "^2.0.1",
       },
       "devDependencies": {
