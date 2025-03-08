@@ -1,3 +1,7 @@
+'@types/node':
+  version: 22.13.10
+  shasum: df9ea358c5ed991266becc3109dc2dc9125d77e4
+  tarball: https://registry.npmjs.org/@types/node/-/node-22.13.10.tgz
 prettier:
   version: 3.5.3
   shasum: 4fc2ce0d657e7a02e602549f053b239cb7dfe1b5
@@ -6,3 +10,7 @@ typescript:
   version: 5.8.2
   shasum: 8170b3702f74b79db2e5a96207c15e65807999e4
   tarball: https://registry.npmjs.org/typescript/-/typescript-5.8.2.tgz
+undici-types:
+  version: latest
+  shasum: 19f31b649579a549957fb1810712dfaf84212b57
+  tarball: https://registry.npmjs.org/undici-types/-/undici-types-7.4.0.tgz

@@ -1,10 +1,10 @@
-import http from 'http';
+import http from 'node:http';
 
 class Server {
   private server: http.Server;
 
   constructor() {
-    this.server = http.createServer((req, res) => {
+    this.server = http.createServer((_req, res) => {
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
       res.end('Hello, World!\n');
