@@ -1,5 +1,3 @@
-import { CustomRequest, customRequestInstance } from "./core/request.js";
-
 class Request {
   private req: any;
 

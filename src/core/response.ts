@@ -1,4 +1,4 @@
-class CustomResponse {
+class FiberResponse {
   private res: any;
 
   constructor(res: any) {
@@ -16,5 +16,5 @@ class CustomResponse {
   }
 }
 
-const customResponseInstance = (res: any) => new CustomResponse(res);
-export { CustomResponse, customResponseInstance };
+const fiberResponseInstance = (res: any) => new FiberResponse(res);
+export { FiberResponse, fiberResponseInstance };

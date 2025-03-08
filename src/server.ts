@@ -1,13 +1,11 @@
-import { CustomServer, customServerInstance } from "./core/server.js";
-import { error, warn, success } from "./lib/logger.js";
-import { routerInstance as router } from "./router.js";
-import { middlewareInstance as middleware } from "./middleware.js";
+import { fiberServerInstance } from "./core/server.js";
+import { error, warn } from "./lib/logger.js";
 
 class Server {
   private server: any;
 
   constructor() {
-    this.server = customServerInstance;
+    this.server = fiberServerInstance;
   }
 
   private async checkPortAvailability(port: number): Promise<number> {

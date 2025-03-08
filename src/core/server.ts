@@ -3,7 +3,7 @@ import { error, warn, success } from '../lib/logger.js';
 import { routerInstance as router } from '../router.js';
 import { middlewareInstance as middleware } from '../middleware.js';
 
-class CustomServer {
+class FiberServer {
   private server: any;
 
   constructor() {
@@ -45,5 +45,5 @@ class CustomServer {
   }
 }
 
-const customServerInstance = new CustomServer();
-export { CustomServer, customServerInstance };
+const fiberServerInstance = new FiberServer();
+export { FiberServer, fiberServerInstance };

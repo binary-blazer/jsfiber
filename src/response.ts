@@ -1,5 +1,3 @@
-import { CustomResponse, customResponseInstance } from "./core/response.js";
-
 class Response {
   private res: any;
 

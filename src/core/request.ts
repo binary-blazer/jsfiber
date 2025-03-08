@@ -1,4 +1,4 @@
-class CustomRequest {
+class FiberRequest {
   private req: any;
 
   constructor(req: any) {
@@ -34,5 +34,5 @@ class CustomRequest {
   }
 }
 
-const customRequestInstance = (req: any) => new CustomRequest(req);
-export { CustomRequest, customRequestInstance };
+const fiberRequestInstance = (req: any) => new FiberRequest(req);
+export { FiberRequest, fiberRequestInstance };
