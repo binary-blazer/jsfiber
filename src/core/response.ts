@@ -1,6 +1,4 @@
-import { CustomResponse, customResponseInstance } from "./core/response.js";
-
-class Response {
+class CustomResponse {
   private res: any;
 
   constructor(res: any) {
@@ -18,5 +16,5 @@ class Response {
   }
 }
 
-const responseInstance = (res: any) => new Response(res);
-export { Response, responseInstance };
+const customResponseInstance = (res: any) => new CustomResponse(res);
+export { CustomResponse, customResponseInstance };
