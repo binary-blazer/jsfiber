@@ -11,6 +11,12 @@
   },
   "files": [
     "dist",
+    "http.d.ts",
+    "http.js",
+    "router.d.ts",
+    "router.js",
+    "server.d.ts",
+    "server.js",
     "README.md",
     "LICENSE"
   ],
