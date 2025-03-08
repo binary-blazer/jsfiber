@@ -5,7 +5,7 @@ class Middleware {
     this.middlewares = [];
   }
 
-  public executeMiddlewares(req: any, res: any, callback: Function): void {
+  private executeMiddlewares(req: any, res: any, callback: Function): void {
     let index = 0;
     const next = () => {
       if (index < this.middlewares.length) {
@@ -23,4 +23,5 @@ class Middleware {
 }
 
 const middleware = new Middleware();
+const use = middleware.use.bind(middleware);
 export default middleware;
