@@ -32,6 +32,19 @@ class FiberRequest {
     });
     return queryParams;
   }
+
+  public parseCookies(): { [key: string]: string } {
+    const cookies: { [key: string]: string } = {};
+    const cookieHeader = this.req.headers.cookie;
+    if (cookieHeader) {
+      const cookiePairs = cookieHeader.split(';');
+      cookiePairs.forEach((pair: string) => {
+        const [key, value] = pair.trim().split('=');
+        cookies[key] = value;
+      });
+    }
+    return cookies;
+  }
 }
 
 const fiberRequestInstance = (req: any) => new FiberRequest(req);

@@ -24,8 +24,9 @@ To start the server, create a new instance of the server and call the `start` me
 
 ```javascript
 import { Server } from "jsfiber/server";
+import { CorsModule } from "jsfiber/module";
 
-const server = new Server({ infoBox: true });
+const server = new Server({ infoBox: true, modules: [CorsModule] });
 server.start(3000);
 ```
 
@@ -110,8 +111,38 @@ router.head('/info', (req, res) => {
 
 router.options('/options', (req, res) => {
   const resInstance = response(res);
-  resInstance.json({ message: 'Options request received' });
+  resInstance.json({ message: 'OPTIONS request received' });
 });
+```
+
+### Cookie Parser
+
+JSFiber includes a built-in cookie parser. You can use it to parse cookies from the request headers. Here is an example:
+
+```javascript
+router.get("/cookies", async (req, res) => {
+  const reqInstance = request(req);
+  const cookies = reqInstance.parseCookies();
+  console.log(`Cookies: ${JSON.stringify(cookies)}`);
+
+  const resInstance = response(res);
+  resInstance.status(200).json({
+    message: 'Cookies parsed',
+    cookies: cookies
+  });
+});
+```
+
+### CORS Support
+
+JSFiber includes built-in CORS support. You can enable CORS by including the `CorsModule` in the `modules` array in the server options. Here is an example:
+
+```javascript
+import { Server } from "jsfiber/server";
+import { CorsModule } from "jsfiber/module";
+
+const server = new Server({ infoBox: true, modules: [CorsModule] });
+server.start(3000);
 ```
 
 ## Full Example
@@ -122,8 +153,9 @@ Bellow we provide a complete full example code.
 import { Server } from "jsfiber/server";
 import { Router, MiddlewareRouter } from "jsfiber/router";
 import { request, response } from "jsfiber/http";
+import { CorsModule } from "jsfiber/module";
 
-const server = new Server({ infoBox: true });
+const server = new Server({ infoBox: true, modules: [CorsModule] });
 const router = new Router();
 const middleware = new MiddlewareRouter();
 
@@ -188,6 +220,18 @@ router.options("/options", async (_req, res) => {
   const resInstance = response(res);
   resInstance.status(200).json({
     message: 'Options request received',
+  });
+});
+
+router.get("/cookies", async (req, res) => {
+  const reqInstance = request(req);
+  const cookies = reqInstance.parseCookies();
+  console.log(`Cookies: ${JSON.stringify(cookies)}`);
+
+  const resInstance = response(res);
+  resInstance.status(200).json({
+    message: 'Cookies parsed',
+    cookies: cookies
   });
 });
 
