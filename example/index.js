@@ -19,4 +19,5 @@ router.get("/", (_req, res) => {
   // })
 });
 
+server.setPublicDirectory("public");
 server.start(3000);
