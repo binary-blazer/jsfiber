@@ -31,7 +31,7 @@ server.start(3000);
 
 ### Port Availability Check
 
-The server now includes a feature to check port availability before starting. If the specified port is unavailable, the server will try subsequent ports until it finds an available one. Warnings are logged each time a new port is tried.
+The server includes a feature to check port availability before starting. If the specified port is unavailable, the server will try subsequent ports until it finds an available one. Warnings are logged each time a new port is tried.
 
 ### Defining Routes
 
@@ -40,10 +40,7 @@ You can define routes using the `router` instance. Here is an example of definin
 ```javascript
 import { Server } from "jsfiber/server";
 import { Router } from "jsfiber/router";
-import { 
-  request,
-  response 
-} from "jsfiber/http";
+import { request, response } from "jsfiber/http";
 
 const server = new Server({ infoBox: true });
 const router = new Router();
@@ -69,7 +66,7 @@ router.post("/create", async (req, res) => {
 
 ### Using Middleware
 
-You can use middleware to handle tasks such as logging, authentication, etc. Here is an example of using middleware:
+You can use the middleware router to setup middlewares to handle tasks such as logging, authentication, etc. Here is an example of using a middleware with the middleware router:
 
 ```javascript
 import { MiddlewareRouter } from "jsfiber/router";
