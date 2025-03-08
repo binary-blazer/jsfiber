@@ -9,14 +9,13 @@ import { constants } from 'node:fs';
 import Box from 'cli-box';
 import ip from 'ip';
 import { fiberResponseInstance } from './response.js';
-import { CorsModule } from '../module.js';
 
 class FiberServer {
   private server: any;
   private publicDirectory: string | null;
   private enableCORS: boolean;
 
-  constructor(modules: any[] = []) {
+  constructor(config: { enableCORS?: boolean } = {}) {
     this.server = createServer((req: IncomingMessage, res: ServerResponse) => {
       const url = req.url ?? '/';
       const method = req.method ?? 'GET';
@@ -48,11 +47,7 @@ class FiberServer {
       });
     });
     this.publicDirectory = null;
-    this.enableCORS = false;
-
-    if (modules.includes(CorsModule)) {
-      this.enableCORS = true;
-    }
+    this.enableCORS = config.enableCORS ?? false;
   }
 
   private async checkPortAvailability(port: number): Promise<number> {

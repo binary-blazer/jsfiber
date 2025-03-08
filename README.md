@@ -24,9 +24,8 @@ To start the server, create a new instance of the server and call the `start` me
 
 ```javascript
 import { Server } from "jsfiber/server";
-import { CorsModule } from "jsfiber/module";
 
-const server = new Server({ infoBox: true, modules: [CorsModule] });
+const server = new Server({ infoBox: true, enableCORS: true });
 server.start(3000);
 ```
 
@@ -141,7 +140,7 @@ JSFiber includes built-in CORS support. You can enable CORS by including the `Co
 import { Server } from "jsfiber/server";
 import { CorsModule } from "jsfiber/module";
 
-const server = new Server({ infoBox: true, modules: [CorsModule] });
+const server = new Server({ infoBox: true, enableCORS: true });
 server.start(3000);
 ```
 
