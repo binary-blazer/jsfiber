@@ -6,6 +6,18 @@ class Response {
       this.res = res;
     }
 
+    /**
+     * Sets the status code of the response.
+     * @param {number} code - The status code to set
+     * @returns {Response} - The Response object
+     * @example
+     * resInstance.status(200).json({ message: "Hello, world!" });
+     * resInstance.status(200).text("Hello, world!");
+     * resInstance.status(404).json({ message: "Not Found" });
+     * resInstance.status(404).text("Not Found");
+     * resInstance.status(500).json({ message: "Internal Server Error" });
+     * resInstance.status(500).text("Internal Server Error");
+     */
     public status(code: number): this {
       this.statusCode = code;
       return this;
@@ -15,7 +27,7 @@ class Response {
       * Sends a JSON response.
       * @param {object} data - The data to send in the response
       * @example
-      * res.json({ message: "Hello, world!" });
+      * resInstance.json({ message: "Hello, world!" });
       */
     public json(data: any): void {
       if (this.statusCode) {
@@ -29,7 +41,7 @@ class Response {
       * Sends a Text response.
       * @param {string} data - The data to send in the response
       * @example
-      * res.text("Hello, world!");
+      * resInstance.text("Hello, world!");
       */
     public text(data: string): void {
       if (this.statusCode) {
