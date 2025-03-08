@@ -1,14 +1,24 @@
 import { fiberServerInstance } from "./core/server.js";
 import { error, warn } from "./lib/logger.js";
 
+interface ServerOptions {
+  /**
+   * Whether to display the info box when the server starts. Info box contains the server URL (localhost and IP address) and the public directory path.
+   * @type {boolean}
+   */
+  infoBox?: boolean;
+}
+
 /**
  * Represents the server instance.
  */
 class Server {
   private server: any;
+  private infoBox: boolean;
 
-  constructor() {
+  constructor(options: ServerOptions = {}) {
     this.server = fiberServerInstance;
+    this.infoBox = options.infoBox ?? false;
   }
 
   private async checkPortAvailability(port: number): Promise<number> {
@@ -29,7 +39,7 @@ class Server {
       if (availablePort !== port) {
         warn(`port ${port} is unavailable. Trying port ${availablePort} instead.`);
       }
-      this.server.start(availablePort);
+      this.server.start(availablePort, this.infoBox);
     } catch (e) {
       error(`server startup failure: ${e}`);
     }

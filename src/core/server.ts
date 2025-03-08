@@ -10,6 +10,9 @@ import { readFile, stat, access } from 'node:fs/promises';
 import { join } from 'node:path';
 import { constants } from 'node:fs';
 
+import Box from 'cli-box';
+import ip from 'ip';
+
 class FiberServer {
   private server: any;
   private publicDirectory: string | null;
@@ -54,12 +57,37 @@ class FiberServer {
     });
   }
 
-  public async start(port: number): Promise<void> {
+  public async start(port: number, infoBox: boolean): Promise<void> {
     try {
       const availablePort = await this.checkPortAvailability(port);
       if (availablePort !== port) {
         warn(`port ${port} is unavailable. Trying port ${availablePort} instead.`);
       }
+  
+      const box = new Box({
+        w: 50,
+        h: 4,
+        stringify: false,
+        marks: {
+          nw: '\x1b[34m╭\x1b[0m',
+          n: '\x1b[34m─\x1b[0m',
+          ne: '\x1b[34m╮\x1b[0m',
+          e: '\x1b[34m│\x1b[0m',
+          se: '\x1b[34m╯\x1b[0m',
+          s: '\x1b[34m─\x1b[0m',
+          sw: '\x1b[34m╰\x1b[0m',
+          w: '\x1b[34m│\x1b[0m'
+        },
+      }, {
+        text: `Public Directory: ${this.publicDirectory && "./"}${this.publicDirectory ?? 'Not set'}\n\nhttp://localhost:${availablePort}/\nhttp://${ip.address()}:${availablePort}/`,
+        stretch: false,
+        autoEOL: true,
+        hAlign: 'middle',
+        vAlign: 'center'
+      }).stringify();
+  
+      if (infoBox) console.log(box);
+  
       this.server.listen(availablePort, () => {
         success(`server running at http://localhost:${availablePort}/`);
       });

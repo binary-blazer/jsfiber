@@ -2,8 +2,12 @@
   version: 6.0.4
   shasum: 908421ec63a78c287e767ea7fe73639057638ad8
   tarball: https://registry.npmjs.org/@types/cli-box/-/cli-box-6.0.4.tgz
+'@types/ip':
+  version: 1.1.3
+  shasum: 5d8634b3514a51768adda5e17c91a11cdb2e5247
+  tarball: https://registry.npmjs.org/@types/ip/-/ip-1.1.3.tgz
 '@types/node':
-  version: 22.13.10
+  version: latest
   shasum: df9ea358c5ed991266becc3109dc2dc9125d77e4
   tarball: https://registry.npmjs.org/@types/node/-/node-22.13.10.tgz
 ansi-parser:
@@ -26,6 +30,10 @@ function.name:
   version: latest
   shasum: 76be1a4ad0dfa872d8025d55d6ca91767652bc67
   tarball: https://registry.npmjs.org/function.name/-/function.name-1.0.14.tgz
+ip:
+  version: 2.0.1
+  shasum: e8f3595d33a3ea66490204234b77636965307105
+  tarball: https://registry.npmjs.org/ip/-/ip-2.0.1.tgz
 is-undefined:
   version: latest
   shasum: 1b2241ef0450bc32c725228cc8d4efe9162ef127
