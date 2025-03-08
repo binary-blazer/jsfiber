@@ -1,8 +1,9 @@
 import { createServer, IncomingMessage, ServerResponse } from 'node:http';
 import { error, warn, success } from '../lib/logger.js';
-import router from '../router.js';
-import middleware from '../middleware.js';
-import { readFile } from 'node:fs/promises';
+import { router } from '../router.js';
+import { middlewares } from '../data/middlewares.js';
+import executeMiddlewares from '../functions/executeMiddlewares.js';
+import { readFile, stat } from 'node:fs/promises';
 import { join } from 'node:path';
 
 class FiberServer {
@@ -13,9 +14,19 @@ class FiberServer {
     this.server = createServer((req: IncomingMessage, res: ServerResponse) => {
       const url = req.url ?? '/';
       const method = req.method ?? 'GET';
-      middleware.executeMiddlewares(req, res, () => {
+      executeMiddlewares(req, res, middlewares, async () => {
         if (this.publicDirectory && method === 'GET') {
-          this.serveStaticFile(url, res);
+          const filePath = join(this.publicDirectory, url);
+          try {
+            const fileStat = await stat(filePath);
+            if (fileStat.isFile()) {
+              this.serveStaticFile(filePath, res);
+            } else {
+              router.handleRequest(method, url, req, res);
+            }
+          } catch (err) {
+            router.handleRequest(method, url, req, res);
+          }
         } else {
           router.handleRequest(method, url, req, res);
         }
@@ -56,9 +67,8 @@ class FiberServer {
     this.publicDirectory = path;
   }
 
-  private async serveStaticFile(url: string, res: ServerResponse): Promise<void> {
+  private async serveStaticFile(filePath: string, res: ServerResponse): Promise<void> {
     try {
-      const filePath = join(this.publicDirectory!, url);
       const data = await readFile(filePath);
       res.writeHead(200);
       res.end(data);

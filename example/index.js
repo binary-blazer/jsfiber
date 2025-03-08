@@ -1,9 +1,10 @@
 import { Server } from "../dist/server.js";
-import middleware from "../dist/middleware.js";
-import router from "../dist/router.js";
+import { Router, MiddlewareRouter } from "../dist/router.js";
 import response from "../dist/response.js";
 
 const server = new Server();
+const router = new Router();
+const middleware = new MiddlewareRouter();
 
 middleware.use((req, _res, next) => {
   console.log(`${req.method} ${req.url}`);
