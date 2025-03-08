@@ -65,6 +65,41 @@ middleware.use((req, res, next) => {
 
 The server now includes improved error handling to manage various scenarios, including port unavailability and server errors. This ensures that the server can handle errors gracefully and provide meaningful error messages.
 
+### Additional HTTP Methods
+
+JSFiber now supports additional HTTP methods such as PUT, DELETE, PATCH, HEAD, and OPTIONS. Here is an example of defining routes for these methods:
+
+```typescript
+router.put('/update', async (req, res) => {
+  const reqInstance = request(req);
+  const body = await reqInstance.body;
+  const resInstance = response(res);
+  resInstance.json({ message: 'Resource updated', received: body });
+});
+
+router.delete('/delete', (req, res) => {
+  const resInstance = response(res);
+  resInstance.json({ message: 'Resource deleted' });
+});
+
+router.patch('/modify', async (req, res) => {
+  const reqInstance = request(req);
+  const body = await reqInstance.body;
+  const resInstance = response(res);
+  resInstance.json({ message: 'Resource modified', received: body });
+});
+
+router.head('/info', (req, res) => {
+  const resInstance = response(res);
+  resInstance.text('');
+});
+
+router.options('/options', (req, res) => {
+  const resInstance = response(res);
+  resInstance.json({ message: 'Options request received' });
+});
+```
+
 ## License
 
 This project is licensed under the BSD-3-Clause License - see the [LICENSE](LICENSE) file for details.
