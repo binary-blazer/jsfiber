@@ -44,19 +44,6 @@ export class Router {
     this.routes[method][path] = handler;
     routes[method][path] = handler;
   }
-
-  public handleRequest(method: string, path: string, ...args: any[]): void {
-    if (path === "/" && this.rootHandler) {
-      this.rootHandler(...args);
-    } else {
-      const routeHandler = this.routes[method]?.[path];
-      if (routeHandler) {
-        routeHandler(...args);
-      } else {
-        error(`No route found for ${method} ${path}`);
-      }
-    }
-  }
 }
 
 export const middlewareRouter = new MiddlewareRouter();
