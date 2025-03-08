@@ -6,10 +6,26 @@ const server = new Server({ infoBox: true });
 const router = new Router();
 const middleware = new MiddlewareRouter();
 
+middleware.use(async (req, res, next) => {
+  console.log(`Middleware: ${req.method} ${req.url}`);
+  next();
+});
+
 router.get("/", async (_req, res) => {
   const resInstance = response(res);
   resInstance.status(200).json({
     message: 'Hello, World!',
+  });
+});
+
+router.post("/create", async (req, res) => {
+  const reqInstance = request(req);
+  const body = await reqInstance.body;
+  console.log(`Body: ${body}`);
+
+  const resInstance = response(res);
+  resInstance.status(201).json({
+    message: 'Resource created',
   });
 });
 
