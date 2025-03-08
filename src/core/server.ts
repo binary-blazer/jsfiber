@@ -1,15 +1,11 @@
 import { createServer, IncomingMessage, ServerResponse } from 'node:http';
-
 import { error, warn, success } from '../lib/logger.js';
 import { middlewares } from '../data/middlewares.js';
-
 import executeMiddlewares from '../functions/executeMiddlewares.js';
 import handleRequest from '../functions/handleRequests.js';
-
 import { readFile, stat, access } from 'node:fs/promises';
 import { join } from 'node:path';
 import { constants } from 'node:fs';
-
 import Box from 'cli-box';
 import ip from 'ip';
 

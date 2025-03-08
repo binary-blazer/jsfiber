@@ -2,9 +2,7 @@ import { Server } from "../dist/server.js";
 import { Router, MiddlewareRouter } from "../dist/router.js";
 import { response } from "../dist/http.js";
 
-const server = new Server({
-  infoBox: true,
-});
+const server = new Server({ infoBox: false });
 const router = new Router();
 const middleware = new MiddlewareRouter();
 
