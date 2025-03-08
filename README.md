@@ -2,6 +2,9 @@
 
 JSFiber is a JavaScript web framework designed to be a comprehensive web server utility like Express. It provides routing, middleware, and request handling features, all while being fast and efficient.
 
+> [!CAUTION]
+> **This project is under construction** and is not fully tested and expected to be entirely working yet. Please use with caution.
+
 ## Installation
 
 To install JSFiber, use npm or the package manager of your choice.
