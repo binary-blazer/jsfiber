@@ -1,13 +1,9 @@
 {
   "name": "jsfiber",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a JavaScript web-framework",
   "main": "dist/index.js",
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
-    },
     "./http": {
       "import": "./dist/http.js",
       "require": "./dist/http.js"
@@ -23,12 +19,6 @@
   },
   "files": [
     "dist",
-    "http.d.ts",
-    "http.js",
-    "router.d.ts",
-    "router.js",
-    "server.d.ts",
-    "server.js",
     "README.md",
     "LICENSE"
   ],
@@ -37,7 +27,7 @@
     "url": "https://github.com/binary-blazer/jsfiber.git"
   },
   "scripts": {
-    "build": "tsc && node ./scripts/moveFiles.js",
+    "build": "tsc",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepublishOnly": "bun run build",
