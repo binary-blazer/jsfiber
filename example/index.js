@@ -12,11 +12,9 @@ middleware.use((req, _res, next) => {
 
 router.get("/", (_req, res) => {
   const resInstance = response(res);
-  resInstance.text("Hello, World!");
-
-  // resInstance.json({
-  //     message: 'Hello, World!',
-  // })
+  resInstance.json({
+    message: 'Hello, World!',
+  });
 });
 
 server.setPublicDirectory("public");
