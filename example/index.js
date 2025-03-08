@@ -13,7 +13,7 @@ middleware.use((req, _res, next) => {
 
 router.get("/", (_req, res) => {
   const resInstance = response(res);
-  resInstance.json({
+  resInstance.status(201).json({
     message: 'Hello, World!',
   });
 });
