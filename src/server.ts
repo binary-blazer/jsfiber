@@ -37,7 +37,9 @@ class Server {
     try {
       const availablePort = await this.checkPortAvailability(port);
       if (availablePort !== port) {
-        warn(`port ${port} is unavailable. Trying port ${availablePort} instead.`);
+        warn(
+          `port ${port} is unavailable. Trying port ${availablePort} instead.`,
+        );
       }
       this.server.start(availablePort, this.infoBox);
     } catch (e) {

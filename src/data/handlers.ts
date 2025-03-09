@@ -1,5 +1,5 @@
 let handlers: { rootHandler: Function | null } = {
-    rootHandler: null,
-}
+  rootHandler: null,
+};
 
 export { handlers };

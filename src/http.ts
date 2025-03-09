@@ -1,55 +1,55 @@
 class Response {
-    private res: any;
-    private statusCode: number | null = null;
+  private res: any;
+  private statusCode: number | null = null;
 
-    constructor(res: any) {
-      this.res = res;
-    }
+  constructor(res: any) {
+    this.res = res;
+  }
 
-    /**
-     * Sets the status code of the response.
-     * @param {number} code - The status code to set
-     * @returns {Response} - The Response object
-     * @example
-     * resInstance.status(200).json({ message: "Hello, world!" });
-     * resInstance.status(200).text("Hello, world!");
-     * resInstance.status(404).json({ message: "Not Found" });
-     * resInstance.status(404).text("Not Found");
-     * resInstance.status(500).json({ message: "Internal Server Error" });
-     * resInstance.status(500).text("Internal Server Error");
-     */
-    public status(code: number): this {
-      this.statusCode = code;
-      return this;
-    }
+  /**
+   * Sets the status code of the response.
+   * @param {number} code - The status code to set
+   * @returns {Response} - The Response object
+   * @example
+   * resInstance.status(200).json({ message: "Hello, world!" });
+   * resInstance.status(200).text("Hello, world!");
+   * resInstance.status(404).json({ message: "Not Found" });
+   * resInstance.status(404).text("Not Found");
+   * resInstance.status(500).json({ message: "Internal Server Error" });
+   * resInstance.status(500).text("Internal Server Error");
+   */
+  public status(code: number): this {
+    this.statusCode = code;
+    return this;
+  }
 
-    /**
-      * Sends a JSON response.
-      * @param {object} data - The data to send in the response
-      * @example
-      * resInstance.json({ message: "Hello, world!" });
-      */
-    public json(data: any): void {
-      if (this.statusCode) {
-        this.res.statusCode = this.statusCode;
-      }
-      this.res.setHeader("Content-Type", "application/json");
-      this.res.end(JSON.stringify(data));
+  /**
+   * Sends a JSON response.
+   * @param {object} data - The data to send in the response
+   * @example
+   * resInstance.json({ message: "Hello, world!" });
+   */
+  public json(data: any): void {
+    if (this.statusCode) {
+      this.res.statusCode = this.statusCode;
     }
+    this.res.setHeader("Content-Type", "application/json");
+    this.res.end(JSON.stringify(data));
+  }
 
-    /**
-      * Sends a Text response.
-      * @param {string} data - The data to send in the response
-      * @example
-      * resInstance.text("Hello, world!");
-      */
-    public text(data: string): void {
-      if (this.statusCode) {
-        this.res.statusCode = this.statusCode;
-      }
-      this.res.setHeader("Content-Type", "text/plain");
-      this.res.end(data);
+  /**
+   * Sends a Text response.
+   * @param {string} data - The data to send in the response
+   * @example
+   * resInstance.text("Hello, world!");
+   */
+  public text(data: string): void {
+    if (this.statusCode) {
+      this.res.statusCode = this.statusCode;
     }
+    this.res.setHeader("Content-Type", "text/plain");
+    this.res.end(data);
+  }
 }
 
 class Request {
@@ -115,27 +115,27 @@ class Request {
 }
 
 /**
-  * Creates a new Response object.
-  * @param {object} res - The response object
-  * @returns {Response} - The Response object
-  * @example
-  * const resInstance = response(res);
-  * resInstance.json({ message: "Hello, world!" });
-  * resInstance.text("Hello, world!");
-  */
+ * Creates a new Response object.
+ * @param {object} res - The response object
+ * @returns {Response} - The Response object
+ * @example
+ * const resInstance = response(res);
+ * resInstance.json({ message: "Hello, world!" });
+ * resInstance.text("Hello, world!");
+ */
 const response = (res: any) => new Response(res);
 
 /**
-  * Creates a new Request object.
-  * @param {object} req - The request object
-  * @returns {Request} - The Request object
-  * @example
-  * const reqInstance = request(req);
-  * const body = await reqInstance.body;
-  * const query = reqInstance.query;
-  * console.log(body);
-  * console.log(query);
-  */
+ * Creates a new Request object.
+ * @param {object} req - The request object
+ * @returns {Request} - The Request object
+ * @example
+ * const reqInstance = request(req);
+ * const body = await reqInstance.body;
+ * const query = reqInstance.query;
+ * console.log(body);
+ * console.log(query);
+ */
 const request = (req: any) => new Request(req);
 
 export { response, request };

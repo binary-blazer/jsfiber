@@ -100,7 +100,7 @@ export class Router {
    * router.patch("/path", (req, res) => {
    *   res.json({ message: "PATCH request received" });
    * });
-    */
+   */
   public patch(path: string, handler: Function): void {
     this.registerRoute("PATCH", path, handler);
   }

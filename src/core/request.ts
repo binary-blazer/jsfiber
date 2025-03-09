@@ -37,9 +37,9 @@ class FiberRequest {
     const cookies: { [key: string]: string } = {};
     const cookieHeader = this.req.headers.cookie;
     if (cookieHeader) {
-      const cookiePairs = cookieHeader.split(';');
+      const cookiePairs = cookieHeader.split(";");
       cookiePairs.forEach((pair: string) => {
-        const [key, value] = pair.trim().split('=');
+        const [key, value] = pair.trim().split("=");
         cookies[key] = value;
       });
     }
