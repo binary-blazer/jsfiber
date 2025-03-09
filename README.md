@@ -154,9 +154,8 @@ Bellow we provide a complete full example code.
 import { Server } from "jsfiber/server";
 import { Router, MiddlewareRouter } from "jsfiber/router";
 import { request, response } from "jsfiber/http";
-import { CorsModule } from "jsfiber/module";
 
-const server = new Server({ infoBox: true, modules: [CorsModule] });
+const server = new Server({ infoBox: true, enableCORS: true });
 const router = new Router();
 const middleware = new MiddlewareRouter();
 

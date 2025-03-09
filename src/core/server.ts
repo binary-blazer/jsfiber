@@ -91,7 +91,7 @@ class FiberServer {
           },
         },
         {
-          text: `Public Directory: ${this.publicDirectory && "./"}${this.publicDirectory ?? "Not set"}\n\nhttp://localhost:${availablePort}/\nhttp://${ip.address()}:${availablePort}/`,
+          text: `Public Directory: ${this.publicDirectory ? `./${this.publicDirectory}` : "Not set"}\n\nhttp://localhost:${availablePort}/\nhttp://${ip.address()}:${availablePort}/`,
           stretch: false,
           autoEOL: true,
           hAlign: "middle",
